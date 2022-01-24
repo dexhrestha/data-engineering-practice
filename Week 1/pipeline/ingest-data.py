@@ -59,7 +59,10 @@ def main(params):
         total = time() - start
         print(f"Successfully inserted {c+1} chunks in {total:.2f} seconds")
         c+=1
-        
+    
+    zones  = pd.read_csv('../datasets/taxi+_zone_lookup.csv',nrows=100) 
+    print(pd.io.sql.get_schema(zones,name='zones',con=engine))
+    zones.to_sql(name='zones',con=engine,if_exists="replace")
 
 if __name__ == "__main__":
     
