@@ -11,6 +11,10 @@ datasets/
 #credentials folders
 credentials/
 .ssh/
+*.hcl
+*.backup
+*.tfstate
+.terraform/
 
 #custom dex
 *.dex
