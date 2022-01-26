@@ -30,7 +30,7 @@ def main(params):
     zones_table_name = params.zones_table_name
     source_url = params.source_url
     zones_url = params.zones_url
-
+    #problem while downloading file so copied locally
     taxi_csv = 'taxi.csv'
     zones_csv = 'zones.csv'
 
@@ -69,7 +69,7 @@ def main(params):
         print(f"Successfully inserted {c+1} chunks in {total:.2f} seconds")
         c+=1
     
-    zones  = pd.read_csv(zones_csv,nrows=100) 
+    zones  = pd.read_csv(zones_csv) 
     print(pd.io.sql.get_schema(zones,name=zones_table_name,con=engine))
     zones.to_sql(name=zones_table_name,con=engine,if_exists="replace")
 

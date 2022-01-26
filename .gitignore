@@ -10,6 +10,7 @@ datasets/
 
 #credentials folders
 credentials/
+.ssh/
 
 #custom dex
 *.dex
