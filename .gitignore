@@ -8,6 +8,8 @@ ny_taxi_postgres_data/
 datasets/
 *.csv
 
+#credentials folders
+credentials/
 
 #custom dex
 *.dex
