@@ -60,19 +60,11 @@ x-airflow-common:
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     GOOGLE_APPLICATION_CREDENTIALS: /.google/credentials/google_credentials.json
     AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT: 'google-cloud-platform://?extra__google_cloud_platform__key_path=/.google/credentials/google_credentials.json'
-    GCP_PROJECT_ID: 'regal-creek-338617'
-    GCP_GCS_BUCKET: "dtc_data_lake_regal-creek-338617"
-    PG_HOST: "${PG_HOST}"
-    PG_USER: "${PG_USER}"
-    PG_PASSWORD: "${PG_PASSWORD}"
-    PG_PORT: "${PG_PORT}"
-    PG_DATABASE: "${PG_DATABASE}"
-
-
+    GCP_PROJECT_ID: "${GCP_PROJECT_ID}"
+    GCP_GCS_BUCKET: "${GCP_GCS_BUCKET}"
 
   volumes:
-    #changed dags to dags_local
-    - ./dags_local:/opt/airflow/dags 
+    - ./dags_hw:/opt/airflow/dags 
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
     - ../.google/credentials/:/.google/credentials:ro
@@ -115,7 +107,7 @@ services:
     <<: *airflow-common
     command: webserver
     ports:
-      - 8080:8080
+      - 8000:8080
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
       interval: 10s

@@ -5,8 +5,19 @@ __pycache__/
 
 #data folders
 ny_taxi_postgres_data/
-datasets/
+dataset*/
+backup/
+
+#project folder
+ig-project/
+
+
 *.csv
+
+
+
+#env
+.env 
 
 #credentials folders
 credentials/
@@ -15,6 +26,10 @@ credentials/
 *.backup
 *.tfstate
 .terraform/
+
+#airflow 
+logs/
+plugins/
 
 #custom dex
 *.dex

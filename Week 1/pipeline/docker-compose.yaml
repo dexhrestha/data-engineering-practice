@@ -9,14 +9,20 @@ services:
       - "H:/data-engineering-practice/Week 1/ny_taxi_postgres_data:/var/lib/postgresql/data"
     ports:
       - "5432:5432"
+    # networks:
+    #   -  airflow
+      
   pgadmin:
     image: dpage/pgadmin4
     environment:
       - PGADMIN_DEFAULT_EMAIL=example@example.com
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
-      - "8080:80"
-networks:
-  default:
-    external: true
-    name: pg-network
+      - "8082:80"
+
+# networks:
+#   airflow:
+#     external:
+#       name: airflow_default
+
+

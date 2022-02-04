@@ -25,7 +25,7 @@ PG_DATABASE = os.getenv('PG_DATABASE')
 
 default_args = {
     "owner": "airflow",
-    "start_date":datetime(2021,1,1),
+    "start_date":datetime(2019,1,1),
     "depends_on_past": False,
     "retries": 1,
 }
@@ -37,6 +37,11 @@ local_workflow =DAG(
 ) 
 
 with local_workflow:
+
+    echo_task =BashOperator(
+        task_id='echotask',
+        bash_command='echo "hello world"'
+    )
     
     wget_task =  BashOperator(
         task_id='fetch_data_from_wget',
@@ -56,5 +61,5 @@ with local_workflow:
             'table_name':TABLE_NAME_TEMPLATE,
             'csv_file':local_file_path},
     )
+    echo_task 
     
-    wget_task >> ingest_task
