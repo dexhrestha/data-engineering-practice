@@ -73,7 +73,7 @@ default_args = {
 
 # NOTE: DAG declaration - using a Context Manager (an implicit way)
 with DAG(
-    dag_id="data_ingestion_gcs_dag",
+    dag_id="nyc_taxi_data_ingestion_gcs_dag",
     schedule_interval="@monthly",
     default_args=default_args,
     catchup=True,
