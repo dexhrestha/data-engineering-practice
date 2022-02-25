@@ -64,9 +64,8 @@ with DAG(
 
         CREATE_PART_TBL_QUERY = (
             f"CREATE OR REPLACE TABLE {BIGQUERY_DATASET}.{ttype}_{DATASET}_{YEAR} \
-            PARTITION BY DATE({ds_col}_) \
             AS \
-            SELECT *, CAST({ds_col} as datetime) as {ds_col}_, CAST(PULocationID as FLOAT64) aS PULocationID_ FROM {BIGQUERY_DATASET}.external_{ttype}_{DATASET}_{YEAR}"
+            SELECT * FROM {BIGQUERY_DATASET}.external_{ttype}_{DATASET}_{YEAR}"
         )
 
         bg_ext_2_partition = BigQueryInsertJobOperator(
